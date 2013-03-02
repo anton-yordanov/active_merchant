@@ -99,7 +99,8 @@ module ActiveMerchant #:nodoc:
       def recurring(money, source, options = {})
         post = {}
         add_amount(post, money)
-        add_invoice(post, options)
+        add_recurring_invoice(post, options)
+        #add_invoice(post, options)
         add_credit_card(post, source)
         add_address(post, options)
         add_transaction_type(post, purchase_action(source))
