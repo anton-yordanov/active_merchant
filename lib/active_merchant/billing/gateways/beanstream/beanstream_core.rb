@@ -238,8 +238,9 @@ module ActiveMerchant #:nodoc:
       end
 
       def add_recurring_invoice(post, options)
-        post[:rbApplyTax1] = options[:apply_tax1]
-        post[:rbApplyTax2] = options[:apply_tax2]
+        post[:trnOrderNumber] = options[:order_id] || SecureRandom.hex(8)
+        post[:rbApplyTax1] = options[:apply_tax1] || 0
+        post[:rbApplyTax2] = options[:apply_tax2] || 0
       end
 
       def add_recurring_operation_type(post, operation)
